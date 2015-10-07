@@ -12,6 +12,7 @@ public class GameController : MonoBehaviour {
 	public int health;
 	public int maxAmmo;
 	public int currentAmmo;
+	public int pain;
 
 	public float fireDistance;
 
@@ -19,6 +20,9 @@ public class GameController : MonoBehaviour {
 	public Text ammoText;
 	public Text healthText;
 
+	public AudioClip gun;
+
+	private AudioSource _source;
 	private int _currentClip;
 
 
@@ -37,6 +41,14 @@ public class GameController : MonoBehaviour {
 
 		}
 	
+	}
+
+	void Start(){
+
+		_source = gameObject.AddComponent<AudioSource>();
+
+		Debug.Log("Source: " + _source);
+
 	}
 
 	void OnLevelWasLoaded(int level){
@@ -65,6 +77,13 @@ public class GameController : MonoBehaviour {
 
 		--currentAmmo;
 
+		if (_source != null) {
+
+			_source.clip = gun;
+			_source.Play();
+		
+		}
+
 		//see if we hit anything
 		int middleX = Camera.main.pixelWidth / 2;
 		int middleY = Camera.main.pixelHeight / 2;
@@ -75,7 +94,13 @@ public class GameController : MonoBehaviour {
 			
 			GameObject obj = hit.collider.gameObject;
 			
-			Debug.Log("Hit something: " + obj);
+			EnemyController controller = obj.GetComponent<EnemyController>();
+
+			if (controller != null) {
+
+				controller.getHit(pain);
+
+			}
 			
 		}
 		

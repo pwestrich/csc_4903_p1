@@ -8,11 +8,13 @@ public class DoorController : ObjectController {
 	public float delay;
 
 	private bool _moved;
+	private AudioSource _audio;
 
 	void Start(){
 
 		_moved = false;
 		moveDistance = transform.rotation * moveDistance;
+		_audio = GetComponent<AudioSource>();
 
 	}
 
@@ -21,6 +23,12 @@ public class DoorController : ObjectController {
 		if (_moved) {
 
 			return;
+
+		}
+
+		if (_audio) {
+
+			_audio.Play();
 
 		}
 
