@@ -3,17 +3,16 @@ using System.Collections;
 
 public class DoorController : ObjectController {
 
-	public float moveDistance;
+	public Vector3 moveDistance;
 	public float speed;
 	public float delay;
 
 	private bool _moved;
-	private Vector3 _movement;
 
 	void Start(){
 
 		_moved = false;
-		_movement = transform.rotation * new Vector3(moveDistance, 0, 0);
+		moveDistance = transform.rotation * moveDistance;
 
 	}
 
@@ -26,7 +25,7 @@ public class DoorController : ObjectController {
 		}
 
 		//when this object is activated, move the door so it opens
-		Vector3 destination = transform.position + _movement;
+		Vector3 destination = transform.position + moveDistance;
 
 		_moved = true;
 
@@ -36,7 +35,7 @@ public class DoorController : ObjectController {
 
 	private IEnumerator moveDoor(){
 	
-		Vector3 destination = transform.position + _movement;
+		Vector3 destination = transform.position + moveDistance;
 
 		while (transform.position != destination) {
 
@@ -49,7 +48,7 @@ public class DoorController : ObjectController {
 		Debug.Log("Waiting: " + delay);
 		yield return new WaitForSeconds(delay);
 
-		destination -= _movement;
+		destination -= moveDistance;
 
 		while (transform.position != destination) {
 
