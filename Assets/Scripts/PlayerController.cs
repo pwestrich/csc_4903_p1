@@ -33,7 +33,6 @@ public class PlayerController : MonoBehaviour {
 
 		if (action) {
 
-			Debug.Log("Performing action...");
 			performAction();
 
 		}
@@ -63,11 +62,11 @@ public class PlayerController : MonoBehaviour {
 
 			GameObject obj = hit.collider.gameObject;
 
-			try {
+			ObjectController controller = obj.GetComponent<ObjectController>();
 
-				obj.GetComponent<ObjectController>().performAction(this.gameObject);
+			if (controller != null) {
 
-			} catch (UnityException it) {
+				controller.performAction(this.gameObject);
 
 			}
 				
