@@ -42,6 +42,11 @@ public class PlayerController : MonoBehaviour {
 
 			//kill the player
 			GameController.controller.die();
+ 
+		} else if (other.CompareTag("Ammo")){
+
+			GameController.controller.addAmmo(16);
+			Destroy(other.gameObject);
 
 		}
 

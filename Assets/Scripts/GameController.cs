@@ -47,8 +47,6 @@ public class GameController : MonoBehaviour {
 
 		_source = gameObject.AddComponent<AudioSource>();
 
-		Debug.Log("Source: " + _source);
-
 	}
 
 	void OnLevelWasLoaded(int level){
@@ -64,6 +62,30 @@ public class GameController : MonoBehaviour {
 		ammoText.text = "Ammo: " + currentAmmo;
 		healthText.text = "Health: " + health;
 	
+	}
+
+	public void addAmmo(int amount){
+
+		currentAmmo += amount;
+		
+		if (currentAmmo > maxAmmo){
+
+			currentAmmo = maxAmmo;
+
+		}
+
+	}
+
+	public void getHit(int pain){
+
+		//deduct and check health
+		health -= pain;
+		if (health <= 0){
+
+			die();
+
+		}
+
 	}
 
 	public void fire(){

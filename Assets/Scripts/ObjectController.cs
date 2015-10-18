@@ -1,9 +1,10 @@
-﻿using UnityEngine;
+﻿
+using UnityEngine;
 using System.Collections;
 
-public abstract class ObjectController : MonoBehaviour {
+public interface ObjectController {
 
 	//performs an action when the player interacts with it
-	public abstract void performAction(GameObject player);
+	void performAction(GameObject player);
 	
 }

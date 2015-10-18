@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class DoorController : ObjectController {
+public class DoorController : MonoBehaviour, ObjectController {
 
 	public Vector3 moveDistance;
 	public float speed;
@@ -18,7 +18,7 @@ public class DoorController : ObjectController {
 
 	}
 
-	public override void performAction(GameObject player){
+	public void performAction(GameObject player){
 
 		if (_moved) {
 
@@ -31,9 +31,6 @@ public class DoorController : ObjectController {
 			_audio.Play();
 
 		}
-
-		//when this object is activated, move the door so it opens
-		Vector3 destination = transform.position + moveDistance;
 
 		_moved = true;
 
