@@ -21,6 +21,7 @@ public class GameController : MonoBehaviour {
 	public Text healthText;
 
 	public AudioClip gun;
+	public AudioClip hurtSound;
 
 	private AudioSource _source;
 	private int _currentClip;
@@ -67,7 +68,7 @@ public class GameController : MonoBehaviour {
 	public void addAmmo(int amount){
 
 		currentAmmo += amount;
-		
+
 		if (currentAmmo > maxAmmo){
 
 			currentAmmo = maxAmmo;
@@ -80,9 +81,15 @@ public class GameController : MonoBehaviour {
 
 		//deduct and check health
 		health -= pain;
+
 		if (health <= 0){
 
 			die();
+
+		} else {
+
+			_source.clip = hurtSound;
+			_source.Play();
 
 		}
 
