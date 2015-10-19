@@ -50,7 +50,7 @@ public class PlayerController : MonoBehaviour {
 
 		} else if (other.CompareTag("Health")){
 
-			GameController.controller.getHit(-20);
+			GameController.controller.getHealth(20);
 			Destroy(other.gameObject);
 
 		}

@@ -7,14 +7,17 @@ public class DoorController : MonoBehaviour, ObjectController {
 	public float speed;
 	public float delay;
 
+	public AudioClip openSound;
+	public AudioClip closeSound;
+
 	private bool _moved;
-	private AudioSource _audio;
+	private AudioSource _source;
 
 	void Start(){
 
 		_moved = false;
 		moveDistance = transform.rotation * moveDistance;
-		_audio = GetComponent<AudioSource>();
+		_source = GetComponent<AudioSource>();
 
 	}
 
@@ -26,12 +29,6 @@ public class DoorController : MonoBehaviour, ObjectController {
 
 		}
 
-		if (_audio) {
-
-			_audio.Play();
-
-		}
-
 		_moved = true;
 
 		StartCoroutine("moveDoor");
@@ -39,7 +36,10 @@ public class DoorController : MonoBehaviour, ObjectController {
 	}
 
 	private IEnumerator moveDoor(){
-	
+		
+		_source.clip = openSound;
+		_source.Play();
+
 		Vector3 destination = transform.position + moveDistance;
 
 		while (transform.position != destination) {
@@ -50,8 +50,10 @@ public class DoorController : MonoBehaviour, ObjectController {
 
 		}
 
-		Debug.Log("Waiting: " + delay);
 		yield return new WaitForSeconds(delay);
+
+		_source.clip = closeSound;
+		_source.Play();
 
 		destination -= moveDistance;
 

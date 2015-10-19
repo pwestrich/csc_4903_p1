@@ -5,6 +5,7 @@ public abstract class EnemyController : MonoBehaviour {
 
 	public int maxHealth;		//how much health can he have?
 	public int damage;			//how much does he hurt per shot?
+	public float accuracy;
 	public float fireTime;		//how often can we fire?
 	public float alertDistance;	//how far away do we care about things?
 	public GameObject drop;		//what does he drop on death?
@@ -45,10 +46,17 @@ public abstract class EnemyController : MonoBehaviour {
 
 			if (result && (hit.collider.gameObject == _player)){
 
-				//we hit the player, hurt him and play sound
+				//no aimbots
+				float num = Random.value;
+
+				if (num < accuracy){
+
+					GameController.controller.getHit(damage);
+
+				}
+
 				_source.clip = shootSound;
 				_source.Play();
-				GameController.controller.getHit(damage);
 				_fireCooldown = fireTime;
 
 			}
