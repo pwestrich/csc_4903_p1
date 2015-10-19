@@ -48,6 +48,11 @@ public class PlayerController : MonoBehaviour {
 			GameController.controller.addAmmo(16);
 			Destroy(other.gameObject);
 
+		} else if (other.CompareTag("Health")){
+
+			GameController.controller.getHit(-20);
+			Destroy(other.gameObject);
+
 		}
 
 	}
