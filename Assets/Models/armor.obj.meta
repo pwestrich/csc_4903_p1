@@ -1,17 +1,17 @@
 fileFormatVersion: 2
 guid: 4d7a94ff37de244128d3fc164f4f6018
-timeCreated: 1444841191
+timeCreated: 1445223595
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
     100000: //RootNode
-    100002: C:\Users\YMobile\Documents\csc_
+    100002: default
     400000: //RootNode
-    400002: C:\Users\YMobile\Documents\csc_
-    2300000: C:\Users\YMobile\Documents\csc_
-    3300000: C:\Users\YMobile\Documents\csc_
-    4300000: C:\Users\YMobile\Documents\csc_
+    400002: default
+    2300000: default
+    3300000: default
+    4300000: default
   materials:
     importMaterials: 1
     materialName: 0

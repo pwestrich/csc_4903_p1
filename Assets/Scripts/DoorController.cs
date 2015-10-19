@@ -42,7 +42,7 @@ public class DoorController : MonoBehaviour, ObjectController {
 
 		Vector3 destination = transform.position + moveDistance;
 
-		while (transform.position != destination) {
+		while (Vector3.Distance(transform.position, destination) > 0.01f) {
 
 			transform.position = Vector3.Lerp(transform.position, destination, speed * Time.deltaTime);
 
@@ -57,8 +57,9 @@ public class DoorController : MonoBehaviour, ObjectController {
 
 		destination -= moveDistance;
 
-		while (transform.position != destination) {
+		while (Vector3.Distance(transform.position, destination) > 0.01f) {
 
+			Debug.Log("Test: " + Vector3.Distance(transform.position, destination));
 			transform.position = Vector3.Lerp(transform.position, destination, speed * Time.deltaTime);
 			
 			yield return null;
