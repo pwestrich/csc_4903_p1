@@ -52,21 +52,24 @@ public class DoorController : MonoBehaviour, ObjectController {
 
 		yield return new WaitForSeconds(delay);
 
-		_source.clip = closeSound;
-		_source.Play();
+		if (gameObject.tag != "Secret") {
 
-		destination -= moveDistance;
+			_source.clip = closeSound;
+			_source.Play();
 
-		while (Vector3.Distance(transform.position, destination) > 0.01f) {
+			destination -= moveDistance;
 
-			Debug.Log("Test: " + Vector3.Distance(transform.position, destination));
-			transform.position = Vector3.Lerp(transform.position, destination, speed * Time.deltaTime);
-			
-			yield return null;
-			
+			while (Vector3.Distance(transform.position, destination) > 0.01f) {
+
+				transform.position = Vector3.Lerp(transform.position, destination, speed * Time.deltaTime);
+				
+				yield return null;
+				
+			}
+
+			_moved = false;
+
 		}
-
-		_moved = false;
 
 	}
 

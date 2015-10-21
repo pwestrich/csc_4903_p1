@@ -53,6 +53,11 @@ public class PlayerController : MonoBehaviour {
 			GameController.controller.getHealth(20);
 			Destroy(other.gameObject);
 
+		} else if (other.CompareTag("Medkit")){
+
+			GameController.controller.getHealth(50);
+			Destroy(other.gameObject);
+
 		}
 
 	}
