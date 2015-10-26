@@ -1,17 +1,17 @@
 fileFormatVersion: 2
 guid: 2998fadd15d0346599d28dce9f2b6b55
-timeCreated: 1444841191
+timeCreated: 1445873384
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
-    100000: Frame_1
+    100000: default
     100002: //RootNode
-    400000: Frame_1
+    400000: default
     400002: //RootNode
-    2300000: Frame_1
-    3300000: Frame_1
-    4300000: Frame_1
+    2300000: default
+    3300000: default
+    4300000: default
   materials:
     importMaterials: 1
     materialName: 0
