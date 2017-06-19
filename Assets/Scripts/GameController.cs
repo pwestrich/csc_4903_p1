@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour {
 
@@ -28,6 +29,7 @@ public class GameController : MonoBehaviour {
 	private AudioSource _source;
 	private int _currentClip;
 
+	public bool enableRoof = true;
 
 	// Use this for initialization
 	void Awake(){
@@ -36,7 +38,7 @@ public class GameController : MonoBehaviour {
 
 			controller = this;
 			DontDestroyOnLoad(gameObject);
-			OnLevelWasLoaded(0);
+			// OnLevelWasLoaded(0);
 
 		} else {
 
@@ -49,6 +51,10 @@ public class GameController : MonoBehaviour {
 	void Start(){
 
 		_source = gameObject.AddComponent<AudioSource>();
+		MeshRenderer roof = GameObject.Find("/Map/Ceiling").GetComponent<MeshRenderer>();
+		if (enableRoof && !roof.enabled) {
+			roof.enabled = true;
+		}
 
 	}
 
@@ -166,7 +172,7 @@ public class GameController : MonoBehaviour {
 		} else {
 
 			//reload the level
-			Application.LoadLevel(Application.loadedLevel);
+			SceneManager.LoadScene(0);
 
 		}
 

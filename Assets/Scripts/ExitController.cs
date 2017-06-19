@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class ExitController : MonoBehaviour, ObjectController {
 
@@ -7,7 +8,7 @@ public class ExitController : MonoBehaviour, ObjectController {
 
 	public void performAction(GameObject player){
 
-		Application.LoadLevel(targetLevel);
+		SceneManager.LoadScene(targetLevel);
 
 	}
 
